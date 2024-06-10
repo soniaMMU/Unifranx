@@ -1,0 +1,66 @@
+/* Personaliza los estilos del sidebar */
+.sidebar {
+    background-color: #031c30; /* color1 */
+    color: #fff; /* Cambia el color del texto del sidebar */
+    position: fixed; /* Fija el sidebar en su posición actual */
+    top: 0; /* Alinea el sidebar en la parte superior */
+    bottom: 0; /* Establece la parte inferior del sidebar en la parte inferior de la pantalla */
+    left: 0; /* Alinea el sidebar en el borde izquierdo */
+    width: 250px; /* Establece el ancho del sidebar */
+    overflow-y: auto; /* Añade un scroll vertical si el contenido del sidebar es más grande que la pantalla */
+}
+
+/* Ajusta el contenido principal para dejar espacio para el sidebar */
+#page-content-wrapper {
+    margin-left: 250px; /* Deja espacio a la izquierda para el sidebar */
+    padding: 20px; /* Añade espacio alrededor del contenido principal */
+}
+
+/* Personaliza los estilos del navbar */
+.navbar {
+    background-color: #f88863; /* color2 */
+    color: #fff; /* Cambia el color del texto del navbar */
+    border-bottom: 1px solid #ccc; /* Añade una línea divisoria en la parte inferior del navbar */
+}
+
+/* Personaliza los estilos del botón de logout */
+.dropdown-menu a {
+    color: #ac4147; /* color1 */
+}
+
+.dropdown-menu a:hover {
+    background-color: #f88863; /* color2 */
+}
+
+/* Personaliza el color de fondo del sidebar */
+#sidebar-wrapper {
+    background-color: #ac4147; /* color1 */
+    color: #fff; /* Cambia el color del texto del sidebar */
+}
+
+/* Personaliza los estilos de los enlaces en el sidebar */
+#accordionSidebar .nav-link {
+    color: #fff; /* Cambia el color de los enlaces */
+}
+
+/* Añade un efecto de hover a los enlaces del sidebar */
+#accordionSidebar .nav-link:hover {
+    background-color: #f88863; /* color2 */
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%; /* El sidebar ocupará el 100% del ancho en pantallas pequeñas */
+        position: relative; /* El sidebar se posicionará de forma relativa */
+    }
+    #page-content-wrapper {
+        margin-left: 0; /* El contenido principal no tendrá margen a la izquierda en pantallas pequeñas */
+    }
+    .navbar {
+        background-color: #ffc27f; /* color3 */
+    }
+    .dropdown-menu a {
+        color: #fff; /* Cambia el color del texto del dropdown a blanco en pantallas pequeñas */
+    }
+}
