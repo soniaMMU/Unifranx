@@ -50,7 +50,7 @@ class HorarioController extends Controller
         Horario::create($request->validated());
 
         return Redirect::route('horarios.index')
-            ->with('success', 'Horario created successfully.');
+            ->with('success', 'Horario registrado.');
     }
 
     /**
@@ -82,7 +82,7 @@ class HorarioController extends Controller
         $horario->update($request->validated());
 
         return Redirect::route('horarios.index')
-            ->with('success', 'Horario updated successfully');
+            ->with('success', 'Horario editado');
     }
 
     public function destroy($id): RedirectResponse
@@ -90,6 +90,6 @@ class HorarioController extends Controller
         Horario::find($id)->delete();
 
         return Redirect::route('horarios.index')
-            ->with('success', 'Horario deleted successfully');
+            ->with('success', 'Registro de horario eliminado');
     }
 }

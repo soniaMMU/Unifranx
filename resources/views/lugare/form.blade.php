@@ -13,9 +13,26 @@
         </div>
         <div class="form-group mb-2 mb20">
             <label for="nom_lu" class="form-label">{{ __('Nombre del lugar') }}</label>
-            <input type="text" name="nom_lu" class="form-control @error('nom_lu') is-invalid @enderror" value="{{ old('nom_lu', $lugare?->nom_lu) }}" id="nom_lu" placeholder="Nombre del lugar">
+            <select name="nom_lu" class="form-select @error('nom_lu') is-invalid @enderror" id="nom_lu">
+                <option value="" disabled selected>Selecciona un lugar</option>
+                <option value="AUDITORIO" {{ old('nom_lu', $lugare?->nom_lu) === 'AUDITORIO' ? 'selected' : '' }}>AUDITORIO</option>
+                <option value="LABORATORIO 1" {{ old('nom_lu', $lugare?->nom_lu) === 'LABORATORIO 1' ? 'selected' : '' }}>LABORATORIO 1</option>
+                <option value="LABORATORIO 2" {{ old('nom_lu', $lugare?->nom_lu) === 'LABORATORIO 2' ? 'selected' : '' }}>LABORATORIO 2</option>
+                <option value="LABORATORIO 3" {{ old('nom_lu', $lugare?->nom_lu) === 'LABORATORIO 3' ? 'selected' : '' }}>LABORATORIO 3</option>
+                <option value="CENTRO DE DESARROLLO DE SOFTWARE" {{ old('nom_lu', $lugare?->nom_lu) === 'CENTRO DE DESARROLLO DE SOFTWARE' ? 'selected' : '' }}>CENTRO DE DESARROLLO DE SOFTWARE</option>
+                <option value="LABORATORIO DE FOTOGRAFIA" {{ old('nom_lu', $lugare?->nom_lu) === 'LABORATORIO DE FOTOGRAFIA' ? 'selected' : '' }}>LABORATORIO DE FOTOGRAFIA</option>
+                <option value="SALA DE SIMULACIONES" {{ old('nom_lu', $lugare?->nom_lu) === 'SALA DE SIMULACIONES' ? 'selected' : '' }}>SALA DE SIMULACIONES</option>
+                <option value="CAMARA GESSEL" {{ old('nom_lu', $lugare?->nom_lu) === 'CAMARA GESSEL' ? 'selected' : '' }}>CAMARA GESSEL</option>
+                <option value="CENTRO DE IMPLEMENTACION CON HARDWARE" {{ old('nom_lu', $lugare?->nom_lu) === 'CENTRO DE IMPLEMENTACION CON HARDWARE' ? 'selected' : '' }}>CENTRO DE IMPLEMENTACION CON HARDWARE</option>
+                <option value="LABORATORIO ODONTOLOGÍA" {{ old('nom_lu', $lugare?->nom_lu) === 'LABORATORIO ODONTOLOGÍA' ? 'selected' : '' }}>LABORATORIO ODONTOLOGÍA</option>
+                <option value="BIBLIOTECA" {{ old('nom_lu', $lugare?->nom_lu) === 'BIBLIOTECA' ? 'selected' : '' }}>BIBLIOTECA</option>
+                <option value="TERRAZA" {{ old('nom_lu', $lugare?->nom_lu) === 'TERRAZA' ? 'selected' : '' }}>TERRAZA</option>
+                <option value="GAME ROOM" {{ old('nom_lu', $lugare?->nom_lu) === 'GAME ROOM' ? 'selected' : '' }}>GAME ROOM</option>
+                <option value="CAFETERIA" {{ old('nom_lu', $lugare?->nom_lu) === 'CAFETERIA' ? 'selected' : '' }}>CAFETERIA</option>
+            </select>
             {!! $errors->first('nom_lu', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
         </div>
+        
         <div class="form-group mb-2 mb20">
             <label for="bl_lu" class="form-label">{{ __('Bloque') }}</label>
             <select name="bl_lu" class="form-select @error('bl_lu') is-invalid @enderror" id="bl_lu">

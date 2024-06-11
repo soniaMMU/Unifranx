@@ -41,7 +41,7 @@ class EventoAnfiController extends Controller
         Evento::create($request->validated());
 
         return Redirect::route('eventoanfi.index')
-            ->with('success', 'Evento created successfully.');
+            ->with('success', 'Evento registrado.');
     }
 
     /**
@@ -72,7 +72,7 @@ class EventoAnfiController extends Controller
         $evento->update($request->validated());
 
         return Redirect::route('eventoanfi.index')
-            ->with('success', 'Evento updated successfully');
+            ->with('success', 'Evento editado');
     }
 
     /**
@@ -83,6 +83,6 @@ class EventoAnfiController extends Controller
         Evento::find($id)->delete();
 
         return Redirect::route('eventoanfi.index')
-            ->with('success', 'Evento deleted successfully');
+            ->with('success', 'Evento eliminado');
     }
 }

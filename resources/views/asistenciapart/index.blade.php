@@ -3,6 +3,13 @@
 @section('title', 'Lista de Asistencias')
 
 @section('content')
+<style>
+    * {
+        
+        color: aliceblue;
+    }
+
+</style>
     <h1>Lista de Asistencias</h1>
     <table class="table">
         <thead>

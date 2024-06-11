@@ -15,120 +15,103 @@
     <!-- Custom fonts for this template-->
     <link href="{{ asset('admin_assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="{{ asset('admin_assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin_assets/css/sidebar.css') }}" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
     <style>
-        /* Define the global font for the page */
         body {
-            font-family: 'Nunito', sans-serif;
+            background: #f6b149;
         }
-        /* Define a flex container for the main structure */
-        #wrapper {
-            display: flex;
-            width: 100%;
-            align-items: stretch;
-        }
-        /* Define the sidebar container */
-        #sidebar-wrapper {
-            min-height: 100vh; /* Minimum height of 100% of the viewport */
-            width: 250px; /* Fixed width of 250px */
-            background-color: #3a3232; /* Background color */
-            color: white; /* Text color */
-        }
-        /* Define the sidebar header style */
-        .sidebar-heading {
-            padding: 0.875rem 1.25rem; /* Inner spacing */
-            font-size: 1.2rem; /* Font size */
-        }
-        /* Define the sidebar item style */
-        .list-group-item {
-            background-color: #f07848; /* Background color */
-            color: white; /* Text color */
-            border: none; /* No borders */
-        }
-        /* Change the background color on hover */
-        .list-group-item:hover {
-            background-color: #d83018;
-        }
-        /* Define the sidebar link style */
-        .nav-item a {
+        /* Sidebar styling */
+        .sidebar {
+            padding-top: 3rem; /* Adjust padding as needed */
+            text-align: center;
+            background-color: #3a3232;
             color: white;
         }
-        /* Change the text color on hover */
-        .nav-item a:hover {
+        /* Sidebar brand icon and text */
+        .sidebar-brand-icon i {
+            font-size: 2rem; /* Adjust icon size */
+        }
+        .sidebar-brand-text {
+            font-size: 1.2rem; /* Adjust text size */
+        }
+        /* Navigation items styling */
+        .nav-item {
+            margin-bottom: 0.5rem; /* Adjust spacing */
+        }
+        /* Sidebar links styling */
+        .nav-link {
+            color: white;
+        }
+        .nav-link:hover {
             color: #fdfcce;
         }
-        /* Adjust the bottom margin of the navigation bar */
-        .navbar {
-            margin-bottom: 0;
+        /* Page content wrapper padding */
+        #page-content-wrapper {
+            padding: 2rem; /* Adjust padding as needed */
         }
-        .bg-dark {
-            background-color: #3a3232 !important; /* Change this */
+        /* Centering navbar content */
+        #navbarSupportedContent {
+            justify-content: center;
         }
     </style>
 </head>
 <body>
     <div id="app">
         <div class="d-flex" id="wrapper">
-           <!-- Sidebar -->
-           <div class="sidebar" id="sidebar-wrapper">
-               <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
-                   <!-- Sidebar - Brand -->
-                   <br>
-                   <br><br>
-                   <br>
-                   <div style="width: 300px; height: 100px;">
+            <!-- Sidebar -->
+            <div class="sidebar" id="sidebar-wrapper">
+                <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
+                    <!-- Sidebar - Brand -->
                     <div>
-                        <img src="{{ asset('admin_assets/img/logouni.png') }}" alt="" style="width: 250px; height: 120px;">
+                        <img src="{{ asset('admin_assets/img/logouni.png') }}" alt="" style="width: 160px; height: 60px;">
                     </div>
-                   </div>
-                   
-                   <br>
-                   <br>
-                   <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/home">
-                       <div class="sidebar-brand-icon">
-                           <i class='fas fa-user-shield'></i>
-                       </div>
-                       <div class="sidebar-brand-text mx-3">Participante</div>
-                   </a>
-                   <!-- Divider -->
-                   <div class="sidebar-heading" align="center">Menu de Informacion</div>
-                   <hr class="sidebar-divider my-0">
-
-                   <div class="list-group list-group-flush">
-                       <a href="{{ route('eventosparti.index') }}" class="list-group-item list-group-item-action">
-                           <i class="fas fa-home"></i> INICIO
-                       </a>
-                       <a href="{{ route('mis.inscripciones') }}" class="list-group-item list-group-item-action">
-                           <i class="fas fa-users"></i> MIS TALLERES
-                       </a>
-                       <a href="{{ route('asistenciapart.index') }}" class="list-group-item list-group-item-action">
-                           <i class="fas fa-comments"></i> MI ASISTENCIA
-                       </a>
-                       <a href="{{ route('login2') }}" class="list-group-item list-group-item-action">
-                        <i class="fas fa-comments"></i> CERRAR SESION
+                    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/home">
+                        <div class="sidebar-brand-icon">
+                            <i class='fas fa-user-shield'></i>
+                        </div>
+                        <div class="sidebar-brand-text mx-3">Participante</div>
                     </a>
-                   </div>
-               </ul>
-           </div>
-           <!-- /#sidebar-wrapper -->
+                    <!-- Divider -->
+                    <div class="sidebar-heading" align="center">Menu de Información</div>
+                    <hr class="sidebar-divider my-0">
+                    <!-- Sidebar navigation items -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('eventosparti.index') }}">
+                            <i class="fas fa-home"></i> INICIO
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('mis.inscripciones') }}">
+                            <i class="fas fa-users"></i> MIS TALLERES
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('asistenciapart.index') }}">
+                            <i class="fas fa-comments"></i> MI ASISTENCIA
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login2') }}">
+                            <i class="fas fa-comments"></i> CERRAR SESION
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /#sidebar-wrapper -->
 
-           <!-- Page Content -->
-           <div id="page-content-wrapper" class="container-fluid">
-               
-
-               <div class="container-fluid">
-                   <main class="py-4">
-                       @yield('content')
-                   </main>
-               </div>
-           </div>
-           <!-- /#page-content-wrapper -->
-       </div>
+            <!-- Page Content -->
+            <div id="page-content-wrapper" class="container-fluid">
+                <div class="container-fluid">
+                    <main class="py-4 row justify-content-center">
+                        @yield('content')
+                    </main>
+                </div>
+            </div>
+            <!-- /#page-content-wrapper -->
+        </div>
     </div>
 
     <!-- Bootstrap core JavaScript -->

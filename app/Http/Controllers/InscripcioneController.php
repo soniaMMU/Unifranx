@@ -92,7 +92,7 @@ class InscripcioneController extends Controller
         $inscripcione->update($request->validated());
 
         return Redirect::route('inscripciones.index')
-            ->with('success', 'Inscripcione updated successfully');
+            ->with('success', 'Inscripcion realizada');
     }
 
     /**
@@ -103,7 +103,7 @@ class InscripcioneController extends Controller
         Inscripcione::find($id)->delete();
 
         return Redirect::route('inscripciones.index')
-            ->with('success', 'Inscripcione deleted successfully');
+            ->with('success', 'Inscripcion eliminada');
     }
 
     public function inscribirse(Request $request): RedirectResponse

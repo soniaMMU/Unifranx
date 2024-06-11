@@ -1,6 +1,7 @@
 @extends('layouts.appparticipante')
 
 @section('content')
+
 <div class="container">
     <!-- Muestra el mensaje de éxito -->
     @if (session('success'))

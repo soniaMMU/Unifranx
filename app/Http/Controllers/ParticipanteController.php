@@ -47,7 +47,7 @@ class ParticipanteController extends Controller
         Participante::create($request->validated());
 
         return Redirect::route('participantes.index')
-            ->with('success', 'Participante created successfully.');
+            ->with('success', 'Participante registrado.');
     }
 
     /**
@@ -79,7 +79,7 @@ class ParticipanteController extends Controller
         $participante->update($request->validated());
 
         return Redirect::route('participantes.index')
-            ->with('success', 'Participante updated successfully');
+            ->with('success', 'Participante editado');
     }
 
     public function destroy($id): RedirectResponse
@@ -87,6 +87,6 @@ class ParticipanteController extends Controller
         Participante::find($id)->delete();
 
         return Redirect::route('participantes.index')
-            ->with('success', 'Participante deleted successfully');
+            ->with('success', 'Participante eliminado');
     }
 }

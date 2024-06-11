@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Models\Participante;
 use App\Models\Sesione;
+use Carbon\Carbon;
 
 class AsistenciaController extends Controller
 {
@@ -18,11 +19,9 @@ class AsistenciaController extends Controller
      */
     public function index(Request $request): View
     {
-        $asistencias = Asistencia::with('participante')->paginate();//======
-        $asistencias = Asistencia::with('sesione')->paginate();//======
-        $asistencias = Asistencia::orderBy('created_at', 'desc')
-        ->paginate();
-        
+        $asistencias = Asistencia::with('participante')->paginate();
+        $asistencias = Asistencia::with('sesione')->paginate();
+        $asistencias = Asistencia::orderBy('created_at', 'desc')->paginate();
 
         return view('asistencia.index', compact('asistencias'))
             ->with('i', ($request->input('page', 1) - 1) * $asistencias->perPage());
@@ -35,8 +34,7 @@ class AsistenciaController extends Controller
     {
         $asistencia = new Asistencia();
         $participante = Participante::all(['id', 'nom_p', 'app_p', 'apm_p']);
-
-        $sesione = Sesione::pluck('t_s','id');
+        $sesione = Sesione::pluck('t_s', 'id');
 
         return view('asistencia.create', compact('asistencia', 'participante', 'sesione'));
     }
@@ -46,7 +44,15 @@ class AsistenciaController extends Controller
      */
     public function store(AsistenciaRequest $request): RedirectResponse
     {
-        Asistencia::create($request->validated());
+        $fechaHora = Carbon::parse($request->fh_asis)->format('Y-m-d H:i:s');
+
+        Asistencia::create([
+            'sesiones_id' => $request->sesiones_id,
+            'participantes_id' => $request->participantes_id,
+            'fh_asis' => $fechaHora,
+            'st_asis' => $request->st_asis,
+            'asistencia_confirmada' => $request->asistencia_confirmada
+        ]);
 
         return Redirect::route('asistencias.index')
             ->with('success', 'Asistencia created successfully.');
@@ -59,7 +65,6 @@ class AsistenciaController extends Controller
     {
         $asistencia = Asistencia::findOrFail($id);
 
-        // Cambiar el estado de la asistencia si aún no está marcada
         if ($asistencia->st_asis !== 'Asistencia Marcada') {
             $asistencia->st_asis = 'Asistencia Marcada';
             $asistencia->save();
@@ -75,8 +80,8 @@ class AsistenciaController extends Controller
     {
         $asistencia = Asistencia::find($id);
         $participante = Participante::all(['id', 'nom_p', 'app_p', 'apm_p']);
+        $sesione = Sesione::pluck('t_s', 'id');
 
-        $sesione = Sesione::pluck('t_s','id');
         return view('asistencia.edit', compact('asistencia', 'participante', 'sesione'));
     }
 
@@ -85,31 +90,51 @@ class AsistenciaController extends Controller
      */
     public function update(AsistenciaRequest $request, Asistencia $asistencia): RedirectResponse
     {
-        $asistencia->update($request->validated());
+        $fechaHora = Carbon::parse($request->fh_asis)->format('Y-m-d H:i:s');
+
+        $asistencia->update([
+            'sesiones_id' => $request->sesiones_id,
+            'participantes_id' => $request->participantes_id,
+            'fh_asis' => $fechaHora,
+            'st_asis' => $request->st_asis,
+            'asistencia_confirmada' => $request->asistencia_confirmada
+        ]);
 
         return Redirect::route('asistencias.index')
-            ->with('success', 'Asistencia updated successfully');
+            ->with('success', 'Asistencia updated successfully.');
     }
 
+    /**
+     * Remove the specified resource from storage.
+     */
     public function destroy($id): RedirectResponse
     {
         Asistencia::find($id)->delete();
 
         return Redirect::route('asistencias.index')
-            ->with('success', 'Asistencia deleted successfully');
+            ->with('success', 'Asistencia deleted successfully.');
     }
 
+    /**
+     * Update the confirmation status of the specified resource.
+     */
+    public function confirm($id): RedirectResponse
+    {
+        $asistencia = Asistencia::findOrFail($id);
+        $asistencia->asistencia_confirmada = 1;
+        $asistencia->save();
+
+        return Redirect::route('asistencias.index')
+            ->with('success', 'Asistencia confirmation status updated successfully.');
+    }
 
     public function volver($id): RedirectResponse
-{
-    $asistencia = Asistencia::findOrFail($id);
-    $asistencia->asistencia_confirmada = 1; // Cambiar el estado a 1
-    $asistencia->save();
+    {
+        $asistencia = Asistencia::findOrFail($id);
+        $asistencia->asistencia_confirmada = 1; // Cambiar el estado a 1
+        $asistencia->save();
 
-    return Redirect::route('asistenciapart.index')
-        ->with('success', 'Estado de asistencia actualizado correctamente.');
-}
-
-    
-    
+        return Redirect::route('asistenciapart.index')
+            ->with('success', 'Estado de asistencia actualizado correctamente.');
+    }
 }

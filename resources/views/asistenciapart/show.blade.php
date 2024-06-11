@@ -3,6 +3,13 @@
 @section('title', 'Detalles de la Asistencia')
 
 @section('content')
+<style>
+    * {
+        
+        color: aliceblue;
+    }
+
+</style>
     <div class="container">
         <div class="row">
             <div class="col-md-6">

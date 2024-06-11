@@ -43,6 +43,13 @@ Route::get('reporte/participantes/pdf', [ReportController::class, 'generarPDFPar
 Route::get('reporte/eventos', [ReportController::class, 'mostrarReporteEventos'])->name('reporte.eventos');
 Route::get('reporte/eventos/pdf', [ReportController::class, 'generarPDFEventos'])->name('reporte.eventos.pdf');
 
+//rep
+
+
+
+
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -41,7 +41,7 @@ class EventoController extends Controller
         Evento::create($request->validated());
 
         return Redirect::route('eventos.index')
-            ->with('success', 'Evento created successfully.');
+            ->with('success', 'Evento registrado.');
     }
 
     /**
@@ -72,7 +72,7 @@ class EventoController extends Controller
         $evento->update($request->validated());
 
         return Redirect::route('eventos.index')
-            ->with('success', 'Evento updated successfully');
+            ->with('success', 'Evento editado');
     }
 
     public function destroy($id): RedirectResponse
@@ -80,6 +80,6 @@ class EventoController extends Controller
         Evento::find($id)->delete();
 
         return Redirect::route('eventos.index')
-            ->with('success', 'Evento deleted successfully');
+            ->with('success', 'Evento eliminado');
     }
 }

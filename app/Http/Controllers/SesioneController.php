@@ -45,7 +45,7 @@ class SesioneController extends Controller
         Sesione::create($request->validated());
 
         return Redirect::route('sesiones.index')
-            ->with('success', 'Sesione created successfully.');
+            ->with('success', 'Sesion registrada.');
     }
 
     /**
@@ -77,7 +77,7 @@ class SesioneController extends Controller
         $sesione->update($request->validated());
 
         return Redirect::route('sesiones.index')
-            ->with('success', 'Sesione updated successfully');
+            ->with('success', 'Sesion editada');
     }
 
     public function destroy($id): RedirectResponse
@@ -85,6 +85,6 @@ class SesioneController extends Controller
         Sesione::find($id)->delete();
 
         return Redirect::route('sesiones.index')
-            ->with('success', 'Sesione deleted successfully');
+            ->with('success', 'Sesion eliminada');
     }
 }

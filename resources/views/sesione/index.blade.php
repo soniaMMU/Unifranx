@@ -55,6 +55,7 @@
 									<th >CANTIDAD DE INTEGRANTES EN LA SESION</th>
 
                                     <th>ESTADO</th>
+                                    <th>ACCIONES</th>
                                     </tr>
                                 </thead>
                                 <tbody>

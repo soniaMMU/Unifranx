@@ -3,6 +3,13 @@
 @extends('layouts.appparticipante')
 
 @section('content')
+<style>
+    * {
+        
+        color: aliceblue;
+    }
+
+</style>
 <div class="container">
     <h1 class="mt-4">Mis Talleres Inscritos</h1>
     @if($inscripciones->count())

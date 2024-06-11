@@ -46,7 +46,7 @@ class RecomendacioneController extends Controller
         Recomendacione::create($request->validated());
 
         return Redirect::route('recomendaciones.index')
-            ->with('success', 'Recomendacione created successfully.');
+            ->with('success', 'Recomendacion registrada.');
     }
 
     /**
@@ -78,7 +78,7 @@ class RecomendacioneController extends Controller
         $recomendacione->update($request->validated());
 
         return Redirect::route('recomendaciones.index')
-            ->with('success', 'Recomendacione updated successfully');
+            ->with('success', 'Recomendacion editada');
     }
 
     public function destroy($id): RedirectResponse
@@ -86,6 +86,6 @@ class RecomendacioneController extends Controller
         Recomendacione::find($id)->delete();
 
         return Redirect::route('recomendaciones.index')
-            ->with('success', 'Recomendacione deleted successfully');
+            ->with('success', 'Recomendacion eliminada');
     }
 }

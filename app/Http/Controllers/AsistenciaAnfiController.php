@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Models\Sesione;
 use App\Models\Participante;
+use Carbon\Carbon;
 
 class AsistenciaAnfiController extends Controller
 {
@@ -18,8 +19,7 @@ class AsistenciaAnfiController extends Controller
      */
     public function index(Request $request): View
     {
-        $asistencias = Asistencia::with('participante')->orderBy('created_at', 'desc')
-        ->paginate();;
+        $asistencias = Asistencia::with('participante')->orderBy('created_at', 'desc')->paginate();
 
         return view('asistencianfi.index', compact('asistencias'))
             ->with('i', ($request->input('page', 1) - 1) * $asistencias->perPage());
@@ -42,7 +42,15 @@ class AsistenciaAnfiController extends Controller
      */
     public function store(AsistenciaRequest $request): RedirectResponse
     {
-        Asistencia::create($request->validated());
+        $fechaHora = Carbon::parse($request->fh_asis)->format('Y-m-d H:i:s');
+
+        Asistencia::create([
+            'sesiones_id' => $request->sesiones_id,
+            'participantes_id' => $request->participantes_id,
+            'fh_asis' => $fechaHora,
+            'st_asis' => $request->st_asis,
+            'asistencia_confirmada' => $request->asistencia_confirmada
+        ]);
 
         return Redirect::route('asistencianfi.index')
             ->with('success', 'Asistencia created successfully.');
@@ -64,7 +72,7 @@ class AsistenciaAnfiController extends Controller
     public function edit($id): View
     {
         $asistencia = Asistencia::find($id);
-        $sesiones = Sesione::pluck('id','id'); // Aquí se muestra solo el ID de la sesión
+        $sesiones = Sesione::pluck('t_s','id'); // Aquí se muestra solo el ID de la sesión
         $participantes = Participante::all(['id', 'nom_p', 'app_p', 'apm_p']);
     
         return view('asistencianfi.edit', compact('asistencia', 'sesiones', 'participantes'));
@@ -75,10 +83,18 @@ class AsistenciaAnfiController extends Controller
      */
     public function update(AsistenciaRequest $request, Asistencia $asistencia): RedirectResponse
     {
-        $asistencia->update($request->validated());
+        $fechaHora = Carbon::parse($request->fh_asis)->format('Y-m-d H:i:s');
+
+        $asistencia->update([
+            'sesiones_id' => $request->sesiones_id,
+            'participantes_id' => $request->participantes_id,
+            'fh_asis' => $fechaHora,
+            'st_asis' => $request->st_asis,
+            'asistencia_confirmada' => $request->asistencia_confirmada
+        ]);
 
         return Redirect::route('asistencianfi.index')
-            ->with('success', 'Asistencia updated successfully');
+            ->with('success', 'Asistencia updated successfully.');
     }
 
     public function destroy($id): RedirectResponse
@@ -86,6 +102,6 @@ class AsistenciaAnfiController extends Controller
         Asistencia::find($id)->delete();
 
         return Redirect::route('asistencianfi.index')
-            ->with('success', 'Asistencia deleted successfully');
+            ->with('success', 'Asistencia deleted successfully.');
     }
 }

@@ -38,7 +38,7 @@
         </div>
         <div class="form-group mb-2 mb20">
             <label for="fh_asis" class="form-label">{{ __('Fecha y hora de asistencia') }}</label>
-            <input type="datetime-local" name="fh_asis" class="form-control @error('fh_asis') is-invalid @enderror" value="{{ old('fh_asis', $asistencia?->fh_asis ? \Carbon\Carbon::parse($asistencia?->fh_asis)->format('Y-m-d\TH:i:s') : null) }}" id="fh_asis" placeholder="Fecha y hora">
+            <input type="datetime-local" name="fh_asis" class="form-control @error('fh_asis') is-invalid @enderror" value="{{ old('fh_asis', $asistencia?->fh_asis ? \Carbon\Carbon::parse($asistencia?->fh_asis)->format('Y-m-d\TH:i') : null) }}" id="fh_asis" placeholder="Fecha y hora">
             {!! $errors->first('fh_asis', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
         </div>
         
