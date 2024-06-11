@@ -39,6 +39,12 @@
                                 <a href="{{ route('inscripciones.create') }}" class="btn btn-primary btn-sm float-right ml-2"  data-placement="left">
                                   {{ __('REGISTRAR NUEVA INSCRIPCION') }}
                                 </a>
+
+                            </div>
+                            <div class="float-right">
+                                <a class="nav-link" href="{{ route('reporte.mostrar') }}">
+                                    <i class='fas fa-file-alt' style='font-size:28px;color:white'></i> REPORTE DE INSCRIPCIONES
+                                </a>
                             </div>
                         </div>
                     </div>

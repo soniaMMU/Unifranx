@@ -27,6 +27,9 @@
                 <a href="{{ route('eventos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                   {{ __('REGISTRAR NUEVO EVENTO') }}
                 </a>
+                <a class="nav-link" href="{{ route('reporte.eventos') }}">
+                    <i class='fas fa-file-alt' style='font-size:28px;color:white'></i> REPORTE DE EVENTOS
+                </a>
             </div>
         </div>
         

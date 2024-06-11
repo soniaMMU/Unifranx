@@ -108,23 +108,8 @@
                         </li>
                         
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('reporte.mostrar') }}">
-                                <i class='fas fa-file-alt' style='font-size:28px;color:white'></i> REPORTE DE INSCRIPCIONES
-                            </a>
-                        </li>
                         <!-- Nuevo botón para el reporte de participantes -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('reporte.participantes') }}">
-                                <i class='fas fa-users' style='font-size:28px;color:white'></i> REPORTE DE PARTICIPANTES
-                            </a>
-                        </li>
-                         <!-- Botón para el reporte de eventos -->
-                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('reporte.eventos') }}">
-                                <i class='fas fa-file-alt' style='font-size:28px;color:white'></i> REPORTE DE EVENTOS
-                            </a>
-                        </li>
+                        
 
                         <li class="nav_item">
                             <a class="nav-link" href="{{ route('login2') }}">CERRAR SESION</a>

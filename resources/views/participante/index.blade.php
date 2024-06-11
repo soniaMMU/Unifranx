@@ -17,6 +17,7 @@
         background-color: #ffbf91;
       
     }
+    
 
 </style>
     <div class="container-fluid">
@@ -30,9 +31,16 @@
                                 {{ __('Participantes') }}
                             </span>
 
-                             <div class="float-right">
+                             <div class="float-left">
                                 <a href="{{ route('participantes.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('REGISTRAR NUEVO PARTICIPANTE') }}
+                                </a>
+                              </div>
+
+                              <div class="float-right">
+                                <!-- Nuevo botón para el reporte de participantes -->
+                                <a class="nav-link" href="{{ route('reporte.participantes') }}">
+                                    <i class='fas fa-users' style='font-size:28px;color:white'></i> REPORTE DE PARTICIPANTES
                                 </a>
                               </div>
                         </div>
