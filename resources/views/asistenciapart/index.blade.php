@@ -22,7 +22,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach(\App\Models\Asistencia::all() as $asistencia)
+            @foreach(\App\Models\Asistencia::where('participantes_id', 3)->get() as $asistencia)
             <tr>
                 <td>{{ $asistencia->participante->nom_p }} {{ $asistencia->participante->app_p }} {{ $asistencia->participante->apm_p }}</td>
                 <td>{{ $asistencia->fh_asis }}</td>

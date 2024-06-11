@@ -59,7 +59,7 @@ class InscripcioneController extends Controller
         Inscripcione::create($request->validated());
 
         return Redirect::route('inscripciones.index')
-            ->with('success', 'Inscripcione created successfully.');
+            ->with('success', 'Inscripcion registrada');
     }
 
     /**
@@ -118,7 +118,7 @@ class InscripcioneController extends Controller
         Inscripcione::create([
             'participantes_id' => $participanteId,
             'eventos_id' => $eventoId,
-            'st_ev' => 'Inscrito',
+            'st_ev' => 'ACTIVO',
         ]);
 
         // Redirige a la vista mis talleres con un mensaje de éxito
